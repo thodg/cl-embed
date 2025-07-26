@@ -1,5 +1,4 @@
 ;;  cl-embed  -  ERB-style template engine for Common Lisp
-;;
 ;;  Copyright 2025 kmx.io <contact@kmx.io>
 ;;
 ;;  Permission to use, copy, modify, and distribute this software for
