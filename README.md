@@ -47,9 +47,12 @@ Example template with Common Lisp code embedding :
 
 ## Documentation
 
+The package is named `embed`.
+
 There are two operations on templates : **parse** and **render**.
 Each operation can be from or to a **file**, a **stream**, or a
-**string**. The whole API is 6 functions.
+**string**. Then you can parse from a string and render to a string
+on the fly using `template`. The whole API is 7 functions.
 
 ### Function (parse-template-from-file *input-pathname*)
 
@@ -78,3 +81,11 @@ Renders *template* with output to the *output-stream* stream.
 ### Function (render-template-to-string *template*)
 
 Renders *template* into a string.
+
+### Function (template *input-string*)
+
+Parses a template from *input-string* and renders it to a string.
+
+---
+
+Copyright 2025 kmx.io <contact@kmx.io>
