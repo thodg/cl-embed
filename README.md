@@ -2,11 +2,17 @@
 
 ERB-style template engine for Common Lisp.
 
+## Installation
+
+```Common-Lisp
+(repo:install :cl-template)
+```
+
 ## Usage
 
 Example template with Common Lisp code embedding :
 
-```
+```Common-Lisp
 <!doctype html>
 <html>
   <head>
