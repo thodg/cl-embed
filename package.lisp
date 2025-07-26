@@ -17,15 +17,13 @@
 
 (in-package :common-lisp-user)
 
-(defpackage :embed.system
-  (:use :common-lisp :asdf))
-
-(in-package :embed.system)
-
-(defsystem :embed
-  :name "embed"
-  :author "kmx.io <contact@kmx.io>"
-  :version "0.1"
-  :description "ERB-style template engine"
-  :components
-  ((:file "embed")))
+(defpackage :embed
+  (:use :common-lisp)
+  (:exports
+   #:parse-template-from-file
+   #:parse-template-from-stream
+   #:parse-template-from-string
+   #:render-template-to-file
+   #:render-template-to-stream
+   #:render-template-to-string
+   #:template))
