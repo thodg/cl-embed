@@ -19,7 +19,7 @@
 
 (defpackage :embed
   (:use :common-lisp)
-  (:exports
+  (:export
    #:parse-template-from-file
    #:parse-template-from-stream
    #:parse-template-from-string
