@@ -69,22 +69,26 @@ of strings and s-expressions ready to be evaluated and concatenated.
 Template parser that opens the *input-string* as an input stream and
 calls `parse-template-from-stream` on the opened stream.
 
-### Function (render-template-to-file *template* *output-pathname*)
+### Function (render-template-to-file *bindings* *template* *output-pathname*)
 
 Renders *template* with output to a new file at path *output-pathname*.
-Calls `render-template-to-stream` under the hood.
+Calls `render-template-to-stream` under the hood. Use *bindings* to pass
+values to template variables.
 
-### Function (render-template-to-stream *template* *output-stream*)
+### Function (render-template-to-stream *bindings* *template* *output-stream*)
 
-Renders *template* with output to the *output-stream* stream.
+Renders *template* with output to the *output-stream* stream. Use
+*bindings* to pass values to template variables.
 
-### Function (render-template-to-string *template*)
+### Function (render-template-to-string *bindings* *template*)
 
-Renders *template* into a string.
+Renders *template* into a string. Use *bindings* to pass values to
+template variables.
 
-### Function (template *input-string*)
+### Function (template *bindings* *input-string*)
 
-Parses a template from *input-string* and renders it to a string.
+Parses a template from *input-string* and renders it immediatly to a
+string. Use *bindings* to pass values to template variables.
 
 ---
 
