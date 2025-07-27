@@ -109,28 +109,33 @@
   (parse-template-from-string "Hello world !")
   (parse-template-from-string "Start<%= (* 1024 1024) %>End"))
 
-(defun render-template-to-stream (template output-stream)
+(defun render-template-to-stream (bindings template output-stream)
   (assert (eq 'str (car template)))
   (dolist (item (rest template))
     (if (stringp item)
         (write-string item output-stream)
         (write-string (with-output-to-string (string-stream)
-                        (prin1 (eval item) string-stream))
+                        (prin1 (eval `(let ,bindings
+                                        ,item))
+                               string-stream))
                       output-stream))))
 
-(defun render-template-to-file (template output-pathname)
+(defun render-template-to-file (bindings template output-pathname)
   (with-open-file (output
                    output-pathname
                    :direction :output
                    :element-type 'character
                    :external-format :utf-8)
-    (render-template-to-stream template output)))
+    (render-template-to-stream bindings template output)))
 
-(defun render-template-to-string (template)
+(defun render-template-to-string (bindings template)
   (with-output-to-string (output)
-    (render-template-to-stream template output)))
+    (render-template-to-stream bindings template output)))
 
-(defun template (input-string)
-  (render-template-to-string (parse-template-from-string input-string)))
+(defun template (bindings input-string)
+  (render-template-to-string
+   bindings
+   (parse-template-from-string input-string)))
 
-(template "Start<%= (+ 21 21) %>End")
+#+nil
+(template '((a 21)) "Start<%= (* 2 a) %>End")
