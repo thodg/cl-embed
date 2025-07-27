@@ -78,12 +78,7 @@
             ((1)
              (if (eq c #\>)
                  (let ((token (get-output-stream-string token-stream)))
-                   (push (case state
-                           ((silent)
-                            (str "(progn " token " \"\")"))
-                           ((verbose)
-                            token))
-                         template)
+                   (push token template)
                    (setf state 'raw
                          token-position 0
                          token-stream (make-string-output-stream)))
@@ -107,7 +102,7 @@
 #+nil
 (progn
   (parse-template-from-string "Hello world !")
-  (parse-template-from-string "Start<%= (* 1024 1024) %>End"))
+  (parse-template-from-string "Start<%= (* 2 (read-from-string %>3<% ) 4) %>End"))
 
 (defun render-template-to-stream (bindings template output-stream)
   (assert (eq 'str (car template)))
