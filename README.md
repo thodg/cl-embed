@@ -6,7 +6,7 @@ BSD/ISC license.
 ## Installation
 
 ```Common-Lisp
-(repo:install :cl-template)
+(repo:install :cl-embed)
 ```
 
 ## Usage
